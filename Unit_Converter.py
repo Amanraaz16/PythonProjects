@@ -40,8 +40,8 @@ def convert():
 # Tkinter GUI setup
 app = tk.Tk()
 app.title("🌍 Unit Converter")
-app.geometry("400x250")
-app.resizable(False, False)
+app.geometry("700x500")
+app.resizable(True, True)
 
 # Widgets
 title = tk.Label(app, text="🌍 Unit Converter", font=("Helvetica", 18, "bold"))
