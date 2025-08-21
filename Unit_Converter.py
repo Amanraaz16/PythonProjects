@@ -33,31 +33,40 @@ def convert():
         value = float(entry.get())
         func = conversions[combo.get()]
         result = func(value)
-        result_label.config(text=f"Result: {result:.2f}")
+        result_label.config(text=f"✅ Result: {result:.2f}")
     except ValueError:
-        messagebox.showerror("Invalid Input", "Please enter a valid number.")
+        messagebox.showerror("❌ Invalid Input", "Please enter a valid number.")
 
 # Tkinter GUI setup
 app = tk.Tk()
 app.title("🌍 Unit Converter")
 app.geometry("700x500")
 app.resizable(True, True)
+app.configure(bg="magenta")
 
-# Widgets
-title = tk.Label(app, text="🌍 Unit Converter", font=("Helvetica", 18, "bold"))
-title.pack(pady=10)
+# Title
+title = tk.Label(app, text="🌍 Unit Converter", font=("Helvetica", 20, "bold"),
+                 fg="cyan", bg="black")
+title.pack(pady=15)
 
+# Dropdown
 combo = ttk.Combobox(app, values=list(conversions.keys()), font=("Helvetica", 12), state="readonly")
 combo.current(0)
 combo.pack(pady=10)
 
-entry = tk.Entry(app, font=("Helvetica", 14), justify="center")
+# Entry box
+entry = tk.Entry(app, font=("Helvetica", 16), justify="center", bg="black", fg="lime", insertbackground="lime")
 entry.pack(pady=10)
 
-convert_btn = tk.Button(app, text="Convert", font=("Helvetica", 14, "bold"), bg="cyan", command=convert)
-convert_btn.pack(pady=10)
+# Convert button
+convert_btn = tk.Button(app, text="Convert", font=("Helvetica", 14, "bold"),
+                        bg="cyan", fg="black", activebackground="lime",
+                        activeforeground="black", command=convert)
+convert_btn.pack(pady=12, ipadx=10, ipady=5)
 
-result_label = tk.Label(app, text="Result: ", font=("Helvetica", 16), fg="blue")
-result_label.pack(pady=10)
+# Result label
+result_label = tk.Label(app, text="Result: ", font=("Helvetica", 18, "bold"),
+                        fg="yellow", bg="black")
+result_label.pack(pady=15)
 
 app.mainloop()
